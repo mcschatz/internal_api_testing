@@ -38,4 +38,13 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_response :created
   end
+
+  test "#update an item" do
+    item = items(:one)
+    updated_item = { name: "Cool item pizza", description: "yummy" }
+
+    put :update, id: item.id, item: updated_item, format: :json
+
+    assert_response :no_content
+  end
 end

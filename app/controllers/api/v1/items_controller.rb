@@ -18,6 +18,13 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      respond_with nil, status: :accepted, location: [:api, :v1, item]
+    end
+  end
+
   private
 
   def item_params
