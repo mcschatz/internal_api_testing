@@ -31,4 +31,11 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_equal json_response["name"], "AWonderfulVase"
   end
+
+  test "#create a new item" do
+    new_item = { name: "Cool item pizza", description: "yummy" }
+    post :create, format: :json, item: new_item
+
+    assert_response :created
+  end
 end
